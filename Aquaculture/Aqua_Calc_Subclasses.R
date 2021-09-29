@@ -45,8 +45,8 @@ for(z in 1:length(catchments)){
   SuitRasterDir <- paste0(rootDir, '/Suitability')
   if(!dir.exists(SuitRasterDir)){dir.create(SuitRasterDir)}
 
-    #for (k in 2:length(uses)){
-  for (k in 1:2){
+  for (k in 1:length(uses)){
+  #for (k in 1:2){
       
       use <- uses[k]
       print(use)
