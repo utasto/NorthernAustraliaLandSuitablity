@@ -24,12 +24,14 @@ plot(ls)
 templateR <- raster('C:/Projects/Roper/Boundaries/demMask_WGS84_geo.tif')
 
 coast <- rasterize(ls, templateR,field='id', background = 10, filename='C:/Projects/Roper/Aquaculture/DistToCoast/coast.tif')
-
+coast <- raster('C:/Projects/Roper/Aquaculture/DistToCoast/coastutm.tif')
 r1 <- coast
-plot(r1)
 r1[r1==10] <- NA
-
-
+plot(r1)
+r3 <- r1/r1
+plot(r3)
+click(r3)
+writeRaster(r3,'C:/Projects/Roper/Aquaculture/DistToCoast/coastutmInt.tif')
 # r1utm <- projectRaster(r1, crs = 'EPSG:3857')
 # writeRaster(r1utm, filename = 'C:/Projects/Roper/Aquaculture/DistToCoast/coastUTM.tif', overwrite=T )
 
@@ -37,7 +39,7 @@ r1[r1==10] <- NA
 ###### ended up using the proximity tool in QGIS as raster function is v slow
 ###  had to convert to UTM run proximity and then convert back to geographic in QGIS
 
-d2Coast <- raster('C:/Projects/Roper/Aquaculture/DistToCoast/distToWaterGeo.tif')
+d2Coast <- raster('C:/Projects/Roper/Aquaculture/DistToCoast/distToWaterGeo3.tif')
 m <- raster('C:/Projects/Roper/Boundaries/demMask_WGS84_geo.tif')
 
 d2m <- mask(d2Coast,m)
