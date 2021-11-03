@@ -21,11 +21,13 @@ library(stringr)
 #rootDir <- '//OSM-09-CDC.it.csiro.au/OSM_CBR_LW_SLGA_work/Projects/APSIM/BAWAP/Silo'
 rootDir <- 'd:/Projects/Climate/BAWAP'
 sumRastersPath <- 'd:/Projects/Climate/BAWAP/Summaries/SummaryRasters'
+#sumRastersPath <- 'd:/temp'
 
 att <- 'rain'
 stat <- 'sum'
 
-outPath <- paste0(rootDir, '/Summaries/', att, '_', stat)
+#outPath <- paste0(rootDir, '/Summaries/', att, '_', stat)
+outPath <- 'd:/temp/demo'
 if(!dir.exists(outPath))(dir.create(outPath, recursive = T))
 
 
@@ -51,10 +53,10 @@ sumAnnual <- function(dirs, outPath, att, stat){
   dPath <- dirs[i]
   fls <- list.files(dirs[i], pattern = '*.nc', full.names = T)
   
-  for (j in 1:length(fls)) {
-    bits <- str_split(fls[j])
-    
-  }
+  # for (j in 1:length(fls)) {
+  #   bits <- str_split(fls[j])
+  #   
+  # }
   stk <- stack(fls)
   sr <- sum(stk)
   yr <- basename(dPath)
